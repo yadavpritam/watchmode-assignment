@@ -1,21 +1,32 @@
-## Watchmode Android Assignment
+# Watchmode Android Assignment
 
-Android application built using Watchmode API.
-The app displays Movies and TV Shows using Jetpack Compose with MVVM architecture.
+This project is an Android application built using the Watchmode API.  
+The app displays Movies and TV Shows using Jetpack Compose with an MVVM-based architecture.
+
+---
+
+## Project Overview
+
+- Platform: Android
+- Language: Kotlin
+- UI: Jetpack Compose
+- Architecture: MVVM
+- API: Watchmode API
 
 ---
 
 ## Features Implemented
 
-- Fetch Movies and TV Shows from Watchmode API
+- Fetch Movies and TV Shows using Watchmode API
 - Toggle between Movies and TV Shows
-- Text-based Home Screen (no poster dependency)
-- Detail Screen
-  - Title details
+- Home screen with clean text-based list UI
+- Detail screen with:
+  - Title information
+  - Description
   - Back navigation
   - Share functionality
-- Shimmer loading effect
-- Graceful error handling
+- Shimmer loading UI while data is loading
+- Graceful error handling for API failures
 - Navigation using Jetpack Navigation Compose
 
 ---
@@ -25,99 +36,113 @@ The app displays Movies and TV Shows using Jetpack Compose with MVVM architectur
 - Kotlin
 - Jetpack Compose
 - MVVM Architecture
-- Retrofit + OkHttp
+- Retrofit
 - RxJava3
 - Hilt (Dependency Injection)
-- Coil
+- Coil (optional image handling)
 - Navigation Compose
 
 ---
 
 ## Architecture
 
-- View → Jetpack Compose UI
-- ViewModel → Business logic & state
-- Repository → API handling
-- State → StateFlow
+The application follows MVVM architecture:
+
+- View: Jetpack Compose UI
+- ViewModel: Handles state and business logic
+- Repository: Handles API calls
+- State Management: StateFlow
 
 ---
 
 ## Assumptions
 
-- Poster images may be missing from API
-- UI does not depend on posters
-- Recommendation section uses filtered data
-- Streaming playback not implemented
+- Poster images are not mandatory on the Home screen, so the UI focuses on text-based content.
+- Recommendation section uses filtered data from already fetched titles.
+- Video streaming is not implemented (UI and navigation only).
 
 ---
 
 ## Challenges Faced
 
-- Missing poster data
-- API timeout on slow internet
-- Navigation arguments in Compose
-- Clean UI without images
+- Handling missing or incomplete data from the API
+- Managing navigation arguments in Jetpack Compose
+- Handling slow network conditions and API timeouts
+- Designing a clean UI without heavy image dependency
 
 ---
 
-## How to Run
+## Network Limitation Note
 
-- Clone repository
-- Open in Android Studio
-- Add Watchmode API key
-- Run on emulator or device
+During testing, it was observed that the Watchmode API may occasionally timeout on slow or unstable internet connections.
 
----
+- On a stable and fast connection, the API responds correctly.
+- On slower connections, timeout errors may occur.
 
-## APK & Demo Video
-
-- APK: Shared in submission
-- Demo Video: Shared via Google Drive
+The app handles this gracefully by showing loading and error states without crashing.
 
 ---
 
-## Network Note
+## How to Run the Project
 
-- Fast internet → API works fine
-- Slow internet → Timeout may occur
-- App handles loading & error states properly
+1. Clone the repository
+2. Open the project in Android Studio
+3. Add your Watchmode API key
+4. Run the app on an emulator or physical device
+
+---
+
+## APK
+
+- Debug APK is included in the repository under the `apk/` folder  
+- File name: `app-debug.apk`
+
+---
+
+## Demo Video (Code Walkthrough & Testing)
+
+Google Drive link:
+
+https://drive.google.com/file/d/1RaYJQTEtE1o95mAnN3pNpQtYvXXgqZt1/view?usp=drivesdk
+
+The video demonstrates:
+- App launch with shimmer loading
+- Movies / TV Shows toggle
+- Navigation to detail screen
+- Back navigation
+- Share functionality
 
 ---
 
 ## Test Cases
 
-### Test Case 1
-- Input: App launch
-- Expected: Shimmer loading
-- Result: Home screen loads
-- Status: Pass
+### Test Case 1: App Launch
+- Input: Launch application
+- Expected Result: Shimmer loading UI appears
+- Result: Pass
 
-### Test Case 2
-- Input: Toggle Movies / TV Shows
-- Expected: List updates
-- Result: Correct data shown
-- Status: Pass
+### Test Case 2: Toggle Movies / TV Shows
+- Input: Switch tabs
+- Expected Result: Correct list loads
+- Result: Pass
 
-### Test Case 3
-- Input: Click on movie/show
-- Expected: Navigate to details
-- Result: Details screen opens
-- Status: Pass
+### Test Case 3: Open Details Screen
+- Input: Click on any movie or TV show
+- Expected Result: Details screen opens
+- Result: Pass
 
-### Test Case 4
-- Input: Back button
-- Expected: Return to Home
-- Result: Works correctly
-- Status: Pass
+### Test Case 4: Back Navigation
+- Input: Press back button on details screen
+- Expected Result: Navigate back to home screen
+- Result: Pass
 
-### Test Case 5
-- Input: Slow network
-- Expected: Error / loading state
-- Result: No crash
-- Status: Pass
+### Test Case 5: Slow Network / API Failure
+- Input: Use slow internet connection
+- Expected Result: Loading or error state shown
+- Result: Pass
 
 ---
 
 ## Developer
 
-Pritam Yadav
+Name: Pritam Yadav
